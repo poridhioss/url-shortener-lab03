@@ -9,13 +9,13 @@ git clone https://github.com/poridhioss/url-shortener-lab03.git
 **2. Install dependencies**
 
 ```bash
+cd url-shortener-lab03
 npm install
 ```
 
 **3. Create a `.env` file and set the environment variables**
 
 ```bash
-# .env
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/url_shortener
 PG_HOST=localhost
@@ -52,6 +52,8 @@ npm run dev
 ```bash
 node test/testEndpoint.js
 ```
+
+> Make sure to run these commands in the root directory of the project.
 
 
 

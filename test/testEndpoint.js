@@ -11,22 +11,22 @@ async function testUrlShortening() {
         console.log('✅ POST /api/urls response:');
         console.log(postResponse.data);
 
-        const shortUrlId = postResponse.data.shortUrl || postResponse.data.id || postResponse.data.code;
-        if (!shortUrlId) {
-            console.error('❌ shortUrlId not found in response');
+        const shortUrl = postResponse.data.shortUrl || postResponse.data.id || postResponse.data.code;
+        if (!shortUrl) {
+            console.error('❌ shortUrl not found in response');
             return;
         }
 
         // 2. Test redirection
         try {
-            console.log('ShortUrlId: ', shortUrlId)
-            const getResponse = await axios.get(`${shortUrlId}`, {
+            console.log('ShortUrl: ', shortUrl)
+            const getResponse = await axios.get(`${shortUrl}`, {
                 maxRedirects: 0,
-                validateStatus: status => status >= 200 && status < 400 // So we can handle 3xx manually
+                validateStatus: status => status >= 200 && status < 400
             });
 
             if (getResponse.status === 302 || getResponse.status === 301) {
-                console.log(`✅ GET /api/urls/${shortUrlId} redirected to: ${getResponse.headers.location}`);
+                console.log(`✅ GET /api/urls/${shortUrl} redirected to: ${getResponse.headers.location}`);
             } else {
                 console.log(`⚠️ GET response status: ${getResponse.status}`);
             }
