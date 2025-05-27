@@ -41,13 +41,7 @@ docker-compose up -d
 node src/utils/keyGenerator.js
 ```
 
-**6. Run the application**
-
-```bash
-npm run dev
-```
-
-**7. Test the project**
+**6. Test the project**
 
 ```bash
 node test/testEndpoint.js

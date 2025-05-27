@@ -17,7 +17,7 @@ services:
         - REDIS_HOST=redis
         - REDIS_PORT=6379
         - REDIS_PASSWORD=your_redis_password
-        - BASE_URL=<---->/api/urls
+        - BASE_URL=<Load-balancer-url>/api/urls
       depends_on:
         - mongo
       volumes:
