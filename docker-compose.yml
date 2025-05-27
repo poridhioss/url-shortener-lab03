@@ -1,6 +1,30 @@
 version: '3.8'
 
 services:
+
+  app:
+      build: .
+      ports:
+        - "3000:3000"
+      environment:
+        - PORT=3000
+        - MONGO_URI=mongodb://mongo:27017/url_shortener
+        - PG_HOST=postgres
+        - PG_PORT=5432
+        - PG_USER=your_pg_user
+        - PG_PASSWORD=your_pg_password
+        - PG_DATABASE=url_shortener
+        - REDIS_HOST=redis
+        - REDIS_PORT=6379
+        - REDIS_PASSWORD=your_redis_password
+        - BASE_URL=<---->/api/urls
+      depends_on:
+        - mongo
+      volumes:
+        - .:/app
+        - /app/node_modules
+      networks:
+        - url-shortener-net
   # MongoDB Service
   mongo:
     image: mongo:6.0
